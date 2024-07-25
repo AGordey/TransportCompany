@@ -9,13 +9,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-//        TransportAndCityDBDAO tb = new TransportAndCityDBDAO();
-//        List<City> t = tb.getCities();
-//        for (City city : t) {
-//            System.out.println(city);
-//        }
         new Application().start();
-//        System.out.println(tb.getTransports());
     }
 
 }

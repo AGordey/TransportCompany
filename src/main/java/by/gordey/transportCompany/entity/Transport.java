@@ -1,5 +1,7 @@
 package by.gordey.transportCompany.entity;
 
+import java.util.Objects;
+
 public class Transport {
     private int id;
     private String transport_name;
@@ -92,5 +94,18 @@ public class Transport {
                 ", typeTransport=" + typeTransport +
                 ", costOfKilometer=" + costOfKilometer +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transport transport = (Transport) o;
+        return id == transport.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }

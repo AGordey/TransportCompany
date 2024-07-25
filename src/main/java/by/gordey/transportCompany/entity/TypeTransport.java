@@ -28,6 +28,10 @@ public class TypeTransport {
         this.type = type;
     }
 
+    public TypeTransport(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "TypeTransport{" +
