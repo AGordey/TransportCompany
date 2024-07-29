@@ -185,5 +185,46 @@ public class TransportAndCityDBDAO implements GetDataDAO {
         }
     }
 
+    @Override
+    public void addOrder(String cityFrom,
+                         String cityTo,
+                         int numberOfPeople,
+                         int cargoQuantity,
+                         String speedestTransport,
+                         int priceOfSpeedestTransport,
+                         int timeOfSpeedestTransport,
+                         String chiepestTransport,
+                         int priceOfChiepestTransport,
+                         int timeOfChiepestTransport) {
+        try (Connection connection = MysqlConnection.getConnection()) {
+            String sql = "INSERT INTO transports_and_cities.orders (" +
+                    "cityFrom, " +
+                    "cityTo," +
+                    "numberOfPeople," +
+                    "cargoQuantity," +
+                    "speedestTransport," +
+                    "priceOfSpeedestTransport," +
+                    "timeOfSpeedestTransport," +
+                    "chiepestTransport," +
+                    "priceOfChiepestTransport," +
+                    "timeOfChiepestTransport) " +
+                    "VALUES (?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, cityFrom.toUpperCase());
+            preparedStatement.setString(2, cityTo.toUpperCase());
+            preparedStatement.setInt(3, numberOfPeople);
+            preparedStatement.setInt(4, cargoQuantity);
+            preparedStatement.setString(5, speedestTransport);
+            preparedStatement.setInt(6, priceOfSpeedestTransport);
+            preparedStatement.setInt(7, timeOfSpeedestTransport);
+            preparedStatement.setString(8, chiepestTransport);
+            preparedStatement.setInt(9, priceOfChiepestTransport);
+            preparedStatement.setInt(10, timeOfChiepestTransport);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }

@@ -22,5 +22,16 @@ public interface GetDataDAO {
 
     void deleteCity(int idOfCity);
 
+    void addOrder(String cityFrom,
+                  String cityTo,
+                  int numberOfPeople,
+                  int cargoQuantity,
+                  String speedestTransport,
+                  int priceOfSpeedestTransport,
+                  int timeOfSpeedestTransport,
+                  String chiepestTransport,
+                  int priceOfChiepestTransport,
+                  int timeOfChiepestTransport);
+
 
 }

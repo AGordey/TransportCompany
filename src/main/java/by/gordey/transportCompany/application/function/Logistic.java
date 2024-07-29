@@ -28,24 +28,35 @@ public class Logistic {
         String cityFrom = getCity("Введите город ОТПРАВКИ");
         String cityTo = getCity("Введите город ПОЛУЧЕНИЯ");
         int quantityOfPeople = Input.getInt("Количество человек");
-        int quantityOfWeight = Input.getInt("Масса груза");
+        int cargoQuantity = Input.getInt("Масса груза");
         try {
-            chooseTransport(quantityOfPeople, quantityOfWeight, typeOfTransport(cityFrom, cityTo));
-            Transport theSpeedestTransport = theSpeedestTransport(chooseTransport(quantityOfPeople, quantityOfWeight, typeOfTransport(cityFrom, cityTo)));
-            Transport theCheapestTransport = theCheapestTransport(chooseTransport(quantityOfPeople, quantityOfWeight, typeOfTransport(cityFrom, cityTo)));
+            chooseTransport(quantityOfPeople, cargoQuantity, typeOfTransport(cityFrom, cityTo));
+            Transport theSpeedestTransport = theSpeedestTransport(chooseTransport(quantityOfPeople, cargoQuantity, typeOfTransport(cityFrom, cityTo)));
+            Transport theCheapestTransport = theCheapestTransport(chooseTransport(quantityOfPeople, cargoQuantity, typeOfTransport(cityFrom, cityTo)));
             double distance = calculateDistance(getCoordinates(cityFrom, cityTo));
+            int timeOfSpeedestTransport = (int) distance / theSpeedestTransport.getSpeed();
+            int priceOfSpeedestTransport = (int) distance * theSpeedestTransport.getCostOfKilometer();
+            int timeOfChiepestTransport = (int) distance / theCheapestTransport.getSpeed();
+            int priceOfChiepestTransport = (int) distance * theCheapestTransport.getCostOfKilometer();
+            //Запись информации в БД о заказе
+            dbdao.addOrder(cityFrom, cityTo,
+                    quantityOfPeople, cargoQuantity,
+                    theSpeedestTransport.getTransport_name(), priceOfSpeedestTransport, timeOfSpeedestTransport,
+                    theCheapestTransport.getTransport_name(), priceOfChiepestTransport, timeOfChiepestTransport);
+
+            //Вывод информации самом быстром и дешевом транспорте
             System.out.printf("\nСамый быстрый транспорт для доставки %s человек и %s груза" +
                             " из %s в %s - это %s. Времяв пути %s час(а). Стоимость %s$ \n",
-                    quantityOfPeople, quantityOfWeight,
+                    quantityOfPeople, cargoQuantity,
                     cityFrom.toUpperCase(), cityTo.toUpperCase(), theSpeedestTransport.getTransport_name(),
-                    (int) distance / theSpeedestTransport.getSpeed(),
-                    (int) distance * theSpeedestTransport.getCostOfKilometer());
+                    timeOfSpeedestTransport,
+                    priceOfSpeedestTransport);
             System.out.printf("\nСамый дешевый транспорт для доставки %s человек и %s груза" +
                             " из %s в %s - это %s. Времяв пути %s час(а). Стоимость %s$ \n\n ",
-                    quantityOfPeople, quantityOfWeight,
+                    quantityOfPeople, cargoQuantity,
                     cityFrom.toUpperCase(), cityTo.toUpperCase(), theCheapestTransport.getTransport_name(),
-                    (int) distance / theCheapestTransport.getSpeed(),
-                    (int) distance * theCheapestTransport.getCostOfKilometer());
+                    timeOfChiepestTransport,
+                    priceOfChiepestTransport);
         } catch (OverloadTransportException e) {
             System.out.println("Нету подходящего транспорта который вместит всех за 1 раз. \n" +
                     "Раздели грузы/людей на несколько рейсов исходя из вместимости транспорта\n");
