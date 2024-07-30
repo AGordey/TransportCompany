@@ -1,10 +1,7 @@
 package by.gordey.transportCompany.dao;
 
 import by.gordey.transportCompany.connections.MysqlConnection;
-import by.gordey.transportCompany.entity.City;
-import by.gordey.transportCompany.entity.Order;
-import by.gordey.transportCompany.entity.Transport;
-import by.gordey.transportCompany.entity.TypeTransport;
+import by.gordey.transportCompany.entity.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -61,6 +58,7 @@ public class TransportAndCityDBDAO implements GetDataDAO {
         }
         return cities;
     }
+
     @Override
     public List<Order> getOrders() {
         List<Order> orders = new ArrayList<>();
@@ -86,6 +84,26 @@ public class TransportAndCityDBDAO implements GetDataDAO {
             throw new RuntimeException(e);
         }
         return orders;
+    }
+
+    @Override
+    public List<User> getUsers() {
+        List<User> users = new ArrayList<>();
+        try (Connection connection = MysqlConnection.getConnection()) {
+            Statement statement = connection.createStatement();
+            String sql = "SELECT * FROM transports_and_cities.users";
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                users.add(new User(
+                        resultSet.getString("userName"),
+                        resultSet.getString("userPassword"),
+                        resultSet.getString("role")
+                ));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return users;
     }
 
     @Override

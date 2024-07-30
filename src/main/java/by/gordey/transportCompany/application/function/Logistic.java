@@ -1,7 +1,7 @@
 package by.gordey.transportCompany.application.function;
 
 
-import by.gordey.transportCompany.application.utils.Input;
+import by.gordey.transportCompany.application.components.utils.Input;
 import by.gordey.transportCompany.dao.TransportAndCityDBDAO;
 import by.gordey.transportCompany.entity.City;
 import by.gordey.transportCompany.entity.Transport;

@@ -1,4 +1,4 @@
-package by.gordey.transportCompany.application.utils;
+package by.gordey.transportCompany.application.components.utils;
 
 import java.util.Scanner;
 
@@ -20,9 +20,11 @@ public class Input {
             SCANNER.nextLine(); // для затирания буфера обмена
             return result;
         }
-        System.out.println("Введены некорректные данные, введи целое число");
-        return getInt();
+        return getInt("Введены некорректные данные, введи целое число");
     }
+//        System.out.println("Введены некорректные данные, введи целое число");
+//        return getInt();
+//    }
 
     public static int getInt (String message) {
         System.out.println(message);

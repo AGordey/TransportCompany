@@ -1,6 +1,6 @@
 package by.gordey.transportCompany.application.components.actions;
 
-import by.gordey.transportCompany.application.utils.Input;
+import by.gordey.transportCompany.application.components.utils.Input;
 import by.gordey.transportCompany.controller.LogisticController;
 import by.gordey.transportCompany.controller.LogisticControllerImpl;
 import by.gordey.transportCompany.entity.City;

@@ -1,6 +1,6 @@
 package by.gordey.transportCompany.application.components.actions;
 
-import by.gordey.transportCompany.application.utils.Input;
+import by.gordey.transportCompany.application.components.utils.Input;
 
 public class DeleteTransportAction extends BaseAction implements Action{
     @Override

@@ -2,6 +2,7 @@ package by.gordey.transportCompany.controller;
 
 import by.gordey.transportCompany.entity.City;
 import by.gordey.transportCompany.entity.Order;
+import by.gordey.transportCompany.entity.User;
 import by.gordey.transportCompany.entity.Transport;
 import by.gordey.transportCompany.exceptions.DuplicateProductException;
 
@@ -14,6 +15,8 @@ public interface LogisticController {
     List<City> getCities();
 
     List<Order> getOrders();
+
+    List <User> getUsers();
 
     void addNewTransport(Transport transport) throws DuplicateProductException;
 
