@@ -43,7 +43,7 @@ public class Application {
             return ConfigButtons.BUTTONS.get(key);
         }
 
-        System.out.println("Нет такого действия!!! Повторите ввод");
+        System.out.println("Нет такого действия!!! Повторите ввод\n");
         return selectButton();
     }
 

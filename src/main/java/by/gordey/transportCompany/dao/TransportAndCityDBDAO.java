@@ -2,6 +2,7 @@ package by.gordey.transportCompany.dao;
 
 import by.gordey.transportCompany.connections.MysqlConnection;
 import by.gordey.transportCompany.entity.City;
+import by.gordey.transportCompany.entity.Order;
 import by.gordey.transportCompany.entity.Transport;
 import by.gordey.transportCompany.entity.TypeTransport;
 
@@ -59,6 +60,32 @@ public class TransportAndCityDBDAO implements GetDataDAO {
             throw new RuntimeException(e);
         }
         return cities;
+    }
+    @Override
+    public List<Order> getOrders() {
+        List<Order> orders = new ArrayList<>();
+        try (Connection connection = MysqlConnection.getConnection()) {
+            Statement statement = connection.createStatement();
+            String sql = "SELECT * FROM transports_and_cities.orders";
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                orders.add(new Order(
+                        resultSet.getString("cityFrom"),
+                        resultSet.getString("cityTo"),
+                        resultSet.getInt("numberOfPeople"),
+                        resultSet.getInt("cargoQuantity"),
+                        resultSet.getString("speedestTransport"),
+                        resultSet.getInt("priceOfSpeedestTransport"),
+                        resultSet.getInt("timeOfSpeedestTransport"),
+                        resultSet.getString("chiepestTransport"),
+                        resultSet.getInt("priceOfChiepestTransport"),
+                        resultSet.getInt("timeOfChiepestTransport")
+                ));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return orders;
     }
 
     @Override

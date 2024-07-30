@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<orders>
+    <order>
+        <cargoQuantity>10</cargoQuantity>
+        <chiepestTransport>Trail big</chiepestTransport>
+        <cityFrom>Minsk</cityFrom>
+        <cityTo>Cair</cityTo>
+        <numberOfPeople>25</numberOfPeople>
+        <priceOfChiepestTransport>76</priceOfChiepestTransport>
+        <priceOfSpeedestTransport>53</priceOfSpeedestTransport>
+        <speedestTransport>Trail big</speedestTransport>
+        <timeOfChiepestTransport>8007</timeOfChiepestTransport>
+        <timeOfSpeedestTransport>16014</timeOfSpeedestTransport>
+    </order>
+    <order>
+        <cargoQuantity>17</cargoQuantity>
+        <chiepestTransport>Trail big</chiepestTransport>
+        <cityFrom>cair</cityFrom>
+        <cityTo>tokio</cityTo>
+        <numberOfPeople>26</numberOfPeople>
+        <priceOfChiepestTransport>28704</priceOfChiepestTransport>
+        <priceOfSpeedestTransport>57408</priceOfSpeedestTransport>
+        <speedestTransport>Bus large</speedestTransport>
+        <timeOfChiepestTransport>273</timeOfChiepestTransport>
+        <timeOfSpeedestTransport>191</timeOfSpeedestTransport>
+    </order>
+    <order>
+        <cargoQuantity>7</cargoQuantity>
+        <chiepestTransport>Trail big</chiepestTransport>
+        <cityFrom>MOSCOW</cityFrom>
+        <cityTo>RIM</cityTo>
+        <numberOfPeople>50</numberOfPeople>
+        <priceOfChiepestTransport>7128</priceOfChiepestTransport>
+        <priceOfSpeedestTransport>130680</priceOfSpeedestTransport>
+        <speedestTransport>Plane medium</speedestTransport>
+        <timeOfChiepestTransport>67</timeOfChiepestTransport>
+        <timeOfSpeedestTransport>2</timeOfSpeedestTransport>
+    </order>
+    <order>
+        <cargoQuantity>4</cargoQuantity>
+        <chiepestTransport>Trail big</chiepestTransport>
+        <cityFrom>CAIR</cityFrom>
+        <cityTo>BERLIN</cityTo>
+        <numberOfPeople>3</numberOfPeople>
+        <priceOfChiepestTransport>8673</priceOfChiepestTransport>
+        <priceOfSpeedestTransport>101185</priceOfSpeedestTransport>
+        <speedestTransport>Auto</speedestTransport>
+        <timeOfChiepestTransport>82</timeOfChiepestTransport>
+        <timeOfSpeedestTransport>26</timeOfSpeedestTransport>
+    </order>
+</orders>

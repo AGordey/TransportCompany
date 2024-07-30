@@ -3,6 +3,7 @@ package by.gordey.transportCompany.controller;
 import by.gordey.transportCompany.dao.GetDataDAO;
 import by.gordey.transportCompany.dao.TransportAndCityDBDAO;
 import by.gordey.transportCompany.entity.City;
+import by.gordey.transportCompany.entity.Order;
 import by.gordey.transportCompany.entity.Transport;
 import by.gordey.transportCompany.exceptions.DuplicateProductException;
 
@@ -19,6 +20,11 @@ public class LogisticControllerImpl implements LogisticController {
     @Override
     public List<City> getCities() {
         return getDataDAO.getCities();
+    }
+
+    @Override
+    public List<Order> getOrders() {
+        return getDataDAO.getOrders();
     }
 
     @Override

@@ -20,5 +20,6 @@ public class ConfigButtons {
         BUTTONS.put(7, new Button("Удалить город",new DeleteCityAction()));
         BUTTONS.put(8, new Button("Удалить транспорт",new DeleteTransportAction()));
         BUTTONS.put(9, new Button("Выйти из приложения",new StopApplicationAction()));
+        BUTTONS.put(10, new Button("Экспорт заявок в XML",new ExportOrdersInXMLAction()));
     }
 }

@@ -1,6 +1,7 @@
 package by.gordey.transportCompany.dao;
 
 import by.gordey.transportCompany.entity.City;
+import by.gordey.transportCompany.entity.Order;
 import by.gordey.transportCompany.entity.Transport;
 
 import java.util.List;
@@ -9,6 +10,8 @@ public interface GetDataDAO {
     List<Transport> getTransports();
 
     List<City> getCities();
+
+    List<Order> getOrders();
 
     void addNewTransport(Transport transport);
 
