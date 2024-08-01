@@ -1,5 +1,7 @@
 package by.gordey.transportCompany.application.components.actions;
 
+import by.gordey.transportCompany.controller.LogisticController;
+import by.gordey.transportCompany.controller.LogisticControllerImpl;
 import by.gordey.transportCompany.entity.Order;
 import by.gordey.transportCompany.entity.OrderWrapper;
 
@@ -9,9 +11,16 @@ import javax.xml.bind.Marshaller;
 import java.io.File;
 import java.util.List;
 
-public class ExportOrdersInXMLAction extends BaseAction implements Action {
+public class ExportOrdersInXMLAction extends Thread implements Action {
+
     @Override
     public void apply() {
+        start();
+    }
+
+    @Override
+    public void run() {
+        LogisticController controller = new LogisticControllerImpl();
         List<Order> orders = controller.getOrders();
         OrderWrapper wrapper = new OrderWrapper(orders);
         try {
@@ -25,4 +34,6 @@ public class ExportOrdersInXMLAction extends BaseAction implements Action {
             throw new RuntimeException(e);
         }
     }
+
+
 }
