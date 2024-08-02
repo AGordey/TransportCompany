@@ -15,11 +15,22 @@ public class ExportOrdersInXMLAction extends Thread implements Action {
 
     @Override
     public void apply() {
-        start();
+        String name = Thread.currentThread().getName();
+        System.out.println("Поток экспорта "+name);
+        Thread thread = new Thread(this); // Создаем новый объект Thread с текущим экземпляром класса
+        thread.start();
+
     }
+
 
     @Override
     public void run() {
+        System.out.println("Заснул на 5 сек");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         LogisticController controller = new LogisticControllerImpl();
         List<Order> orders = controller.getOrders();
         OrderWrapper wrapper = new OrderWrapper(orders);

@@ -10,6 +10,7 @@ import by.gordey.transportCompany.exceptions.OverloadTransportException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Logistic {
     public static TransportAndCityDBDAO dbdao = new TransportAndCityDBDAO();
@@ -25,6 +26,8 @@ public class Logistic {
     }
 
     public void logistic() {
+        String nameThread = Thread.currentThread().getName();
+        System.out.println("Текущий поток " +nameThread);
         String cityFrom = getCity("Введите город ОТПРАВКИ");
         String cityTo = getCity("Введите город ПОЛУЧЕНИЯ");
         int quantityOfPeople = Input.getInt("Количество человек");
@@ -83,26 +86,29 @@ public class Logistic {
 
     // Определяю самый быстрый транспорт из подходящего
     private Transport theSpeedestTransport(List<Transport> transports) {
-        transports.sort(new Comparator<Transport>() {
-            @Override
-            public int compare(Transport o1, Transport o2) {
-                return (o2.getSpeed()) - o1.getSpeed();
-            }
-        });
-        Transport transport = transports.get(0);
-        return transport;
+//        transports.sort(new Comparator<Transport>() {
+//            @Override
+//            public int compare(Transport o1, Transport o2) {
+//                return (o2.getSpeed()) - o1.getSpeed();
+//            }
+//        });
+//        Transport transport = transports.get(0);
+        Transport theSpeedestTransport = transports.stream()
+                .max(Comparator.comparingInt(Transport::getSpeed)).stream().findFirst().get();
+        return theSpeedestTransport ;
     }
 
     // Определяю самый дешевый транспорт из подходящего
     private Transport theCheapestTransport(List<Transport> transports) {
-        transports.sort(new Comparator<Transport>() {
-            @Override
-            public int compare(Transport o1, Transport o2) {
-                return (o1.getCostOfKilometer()) - o2.getCostOfKilometer();
-            }
-        });
-        Transport transport = transports.get(0);
-        return transport;
+//        transports.sort(new Comparator<Transport>() {
+//            @Override
+//            public int compare(Transport o1, Transport o2) {
+//                return (o1.getCostOfKilometer()) - o2.getCostOfKilometer();
+//            }
+//        });
+//        Transport transport = transports.get(0);
+Transport theCheapestTransport = (Transport) transports.stream().min(Comparator.comparing(Transport::getCostOfKilometer)).stream().findFirst().get();
+        return theCheapestTransport;
     }
 
 

@@ -48,4 +48,16 @@
         <timeOfChiepestTransport>82</timeOfChiepestTransport>
         <timeOfSpeedestTransport>26</timeOfSpeedestTransport>
     </order>
+    <order>
+        <cargoQuantity>3</cargoQuantity>
+        <chiepestTransport>Trail big</chiepestTransport>
+        <cityFrom>CAIR</cityFrom>
+        <cityTo>TOKIO</cityTo>
+        <numberOfPeople>7</numberOfPeople>
+        <priceOfChiepestTransport>28704</priceOfChiepestTransport>
+        <priceOfSpeedestTransport>143520</priceOfSpeedestTransport>
+        <speedestTransport>Microvan</speedestTransport>
+        <timeOfChiepestTransport>273</timeOfChiepestTransport>
+        <timeOfSpeedestTransport>119</timeOfSpeedestTransport>
+    </order>
 </orders>
